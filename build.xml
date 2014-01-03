@@ -18,6 +18,20 @@
         </fileset>
     </path>
 
+    <path id="rythm.class.path">
+        <fileset dir="${lib}">
+            <include name="**/*.jar"/>
+			<exclude name="rythm-engine-1.0-b11-CARL-SNAPSHOT.jar"/>
+        </fileset>
+    </path>
+
+	<path id="newrythm.class.path">
+        <fileset dir="${lib}">
+            <include name="**/*.jar"/>
+			<exclude name="rythm-engine-1.0-b10-SNAPSHOT.jar"/>
+        </fileset>
+    </path>
+
     <target name="init">
         <tstamp/>
         <mkdir dir="${classes}"/>
@@ -80,7 +94,21 @@
             <sysproperty  key="buf" value="${buf}"/>
             <sysproperty  key="rythm.new" value="${rythm.new}"/>
             <classpath location="classes"/>
-            <classpath refid="project.class.path"/>
+            <classpath refid="rythm.class.path"/>
+        </java>
+    </target>
+
+    <target name="newrythm" depends="compile">
+        <java classname="teb.NewRythm" output="output/newrythm.html" logError="true" fork="true">
+            <jvmarg value="-server"/>
+            <!--<jvmarg value="-javaagent:shiftone-jrat.jar"/>-->
+            <sysproperty  key="out" value="${out}"/>
+            <sysproperty  key="wtimes" value="${wtimes}"/>
+            <sysproperty  key="ntimes" value="${ntimes}"/>
+            <sysproperty  key="buf" value="${buf}"/>
+            <sysproperty  key="rythm.new" value="${rythm.new}"/>
+            <classpath location="classes"/>
+            <classpath refid="newrythm.class.path"/>
         </java>
     </target>
 
@@ -167,7 +195,43 @@
             <classpath refid="project.class.path"/>
         </java>
     </target>
-   
+
+	<target name="japid" depends="compile">
+        <java classname="teb.Japid" output="output/japid.html" logError="true" fork="true">
+            <jvmarg value="-server"/>
+            <sysproperty  key="out" value="${out}"/>
+            <sysproperty  key="wtimes" value="${wtimes}"/>
+            <sysproperty  key="ntimes" value="${ntimes}"/>
+            <sysproperty  key="buf" value="${buf}"/>
+            <classpath location="classes"/>
+            <classpath refid="project.class.path"/>
+        </java>
+    </target>
+
+	<target name="gtengine" depends="compile">
+        <java classname="teb.Gtengine" output="output/gtengine.html" logError="true" fork="true">
+            <jvmarg value="-server"/>
+            <sysproperty  key="out" value="${out}"/>
+            <sysproperty  key="wtimes" value="${wtimes}"/>
+            <sysproperty  key="ntimes" value="${ntimes}"/>
+            <sysproperty  key="buf" value="${buf}"/>
+            <classpath location="classes"/>
+            <classpath refid="project.class.path"/>
+        </java>
+    </target>
+
+	<target name="stringtemplate" depends="compile">
+        <java classname="teb.StringTemplate" output="output/stringtemplate.html" logError="true" fork="true">
+            <jvmarg value="-server"/>
+            <sysproperty  key="out" value="${out}"/>
+            <sysproperty  key="wtimes" value="${wtimes}"/>
+            <sysproperty  key="ntimes" value="${ntimes}"/>
+            <sysproperty  key="buf" value="${buf}"/>
+            <classpath location="classes"/>
+            <classpath refid="project.class.path"/>
+        </java>
+    </target>
+
     <target name="header">
         <echo>
 #################################################################
@@ -185,9 +249,9 @@
         </echo>
     </target>
 
-    <target name="selected" depends="header,stringbuilder,freemarker,velocity,rythm,jamon,httl,jmte,mustache"></target>
-    <target name="all" depends="header,stringbuilder,freemarker,velocity,rythm,jamon,httl,jmte,jangod,thymeleaf,mustache"></target>
-    
+    <target name="selected" depends="header,stringbuilder,freemarker,velocity,rythm,newrythm,jamon,httl,jmte,mustache,japid,stringtemplate"></target>
+    <target name="all" depends="header,stringbuilder,freemarker,velocity,rythm,newrythm,jamon,httl,jmte,mustache,japid,stringtemplate,jangod,thymeleaf"></target>
+
     <target name="help">
         <echo>
 ==============================================================================

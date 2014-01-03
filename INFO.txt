@@ -1,5 +1,5 @@
 ==============================================================================
-              JAVA TEMPLATE ENGINE BENCHMARKER v1.0
+              JAVA TEMPLATE ENGINE BENCHMARKER v1.1
 ==============================================================================
 
 This is a benchmark program for a collection of Java template engines:
@@ -7,10 +7,12 @@ This is a benchmark program for a collection of Java template engines:
   * freemarker - v2.3.19
   * velocity - v1.7
   * rythm - v1.0-b2
+  * rythm - v1.0-b9
   * httl - 1.0.7
   * beetl - 1.2
   * jamon - 2.3
   * jangod - no version info
+  * japid - 0.9.3
   * thymeleaf - 2.0.15
   * mustache - 0.8.12
   
