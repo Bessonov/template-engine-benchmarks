@@ -248,7 +248,7 @@
         <echo>
 #################################################################
             
-            JAVA TEMPLATE ENGINE BENCHMARKER v1.0
+            JAVA TEMPLATE ENGINE BENCHMARKER v1.2
             
                Output method:   ${out}
                warm up loops:   ${wtimes}
@@ -267,7 +267,7 @@
     <target name="help">
         <echo>
 ==============================================================================
-              JAVA TEMPLATE ENGINE BENCHMARKER v1.0
+              JAVA TEMPLATE ENGINE BENCHMARKER v1.2
 ==============================================================================
 
 This is a benchmark program for a collection of Java template engines
