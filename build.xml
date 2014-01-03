@@ -232,6 +232,18 @@
         </java>
     </target>
 
+	<target name="jatl" depends="compile">
+        <java classname="teb.Jatl" output="output/jatl.html" logError="true" fork="true">
+            <jvmarg value="-server"/>
+            <sysproperty  key="out" value="${out}"/>
+            <sysproperty  key="wtimes" value="${wtimes}"/>
+            <sysproperty  key="ntimes" value="${ntimes}"/>
+            <sysproperty  key="buf" value="${buf}"/>
+            <classpath location="classes"/>
+            <classpath refid="project.class.path"/>
+        </java>
+    </target>
+
     <target name="header">
         <echo>
 #################################################################
@@ -249,8 +261,8 @@
         </echo>
     </target>
 
-    <target name="selected" depends="header,stringbuilder,freemarker,velocity,rythm,newrythm,jamon,httl,jmte,mustache,japid,stringtemplate"></target>
-    <target name="all" depends="header,stringbuilder,freemarker,velocity,rythm,newrythm,jamon,httl,jmte,mustache,japid,stringtemplate,jangod,thymeleaf"></target>
+    <target name="selected" depends="header,stringbuilder,freemarker,velocity,rythm,newrythm,jamon,httl,jmte,mustache,japid,stringtemplate,jatl"></target>
+    <target name="all" depends="header,stringbuilder,freemarker,velocity,rythm,newrythm,jamon,httl,jmte,mustache,japid,stringtemplate,jatl,jangod,thymeleaf"></target>
 
     <target name="help">
         <echo>
