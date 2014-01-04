@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+html(xmlns="http://www.w3.org/1999/xhtml", xml:lang="en", lang="en")
+  head
+    title Stock Prices - Jade
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />
+    <script type="text/javascript" src="/js/util.js"></script>
+    style.
+        /*<![CDATA[*/
+
+        body {
+            color: #333333;
+            line-height: 150%;
+        }
+
+        thead {
+            font-weight: bold;
+            background-color: #CCCCCC;
+        }
+
+        .odd {
+            background-color: #FFCCCC;
+        }
+
+        .even {
+            background-color: #CCCCFF;
+        }
+
+        .minus {
+            color: #FF0000;
+        }
+
+        /*]]>*/
+
+  body
+    h1 Stock Prices - HTTL
+    table
+      thead
+        tr
+          th #
+          th symbol
+          th name
+          th price
+          th change
+          th ratio
+      tbody
+        each item, i in items
+          tr(class="#{i % 2 == 1 ? 'even' : 'odd'}")
+            td(style="text-align: center") #{i + 1}
+            td
+              a(href="/stocks/#{item.symbol}") #{item.symbol}
+            td
+              a(href="#{item.url}") #{item.name}
+            td
+              strong #{item.price}
+            if item.change < 0.0
+              td.minus #{item.change}
+              td.minus #{item.ratio}
+            else
+              td #{item.change}
+              td #{item.ratio}

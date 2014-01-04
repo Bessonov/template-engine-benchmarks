@@ -245,6 +245,18 @@
         </java>
     </target>
 
+	<target name="jade4j" depends="compile">
+        <java classname="teb.Jade4j" output="output/jade.html" logError="true" fork="true" maxmemory="${maxmemory}">
+            <jvmarg value="-server"/>
+            <sysproperty  key="out" value="${out}"/>
+            <sysproperty  key="wtimes" value="${wtimes}"/>
+            <sysproperty  key="ntimes" value="${ntimes}"/>
+            <sysproperty  key="buf" value="${buf}"/>
+            <classpath location="classes"/>
+            <classpath refid="project.class.path"/>
+        </java>
+    </target>
+
     <target name="header">
         <echo>
 #################################################################
@@ -263,8 +275,8 @@
         </echo>
     </target>
 
-    <target name="selected" depends="header,stringbuilder,freemarker,velocity,rythm,newrythm,jamon,httl,jmte,mustache,japid,stringtemplate,jatl"></target>
-    <target name="all" depends="header,stringbuilder,freemarker,velocity,rythm,newrythm,jamon,httl,jmte,mustache,japid,stringtemplate,jatl,jangod,thymeleaf"></target>
+    <target name="selected" depends="header,stringbuilder,freemarker,velocity,rythm,newrythm,jamon,httl,jmte,mustache,japid,stringtemplate,jatl,jade4j"></target>
+    <target name="all" depends="header,stringbuilder,freemarker,velocity,rythm,newrythm,jamon,httl,jmte,mustache,japid,stringtemplate,jatl,jade4j,jangod,thymeleaf"></target>
 
     <target name="help">
         <echo>
